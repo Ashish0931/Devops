@@ -26,8 +26,9 @@ change_path() {
  #building docker image
  build_image() {
 
-         echo "***********building docker image **************"
+        echo "***********building docker image **************"
 
+        eval $(minikube docker-env)
         docker build -t pythonapp:V1 .
         echo "---------- build successful ------------"
 
