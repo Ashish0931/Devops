@@ -13,6 +13,11 @@ check_requirements() {
         echo "----------requirements are available------------"
 }
 
+reset_env() {
+        echo "************ resetting environment *******************"
+        docker system prune -af
+        echo "************ environment reset successful ************"
+}
 # changing path to working folder
 change_path() {
 
@@ -37,11 +42,21 @@ change_path() {
  #starting minikube
  start_minikube() {
 
-         echo "***********starting minikube **************"
+        echo "***********starting minikube **************"
 
-        minikube start --force
+        data=$( minikube status | grep host )
 
-        echo "----------Minikube started ------------"
+        echo "${data}"
+
+        if [ "${data}" = "host: Stopped" ];
+        then
+                minikube start --force
+                echo "----------Minikube started ------------"
+        else
+                echo " ---------------- mini kube is already running --------------------"
+
+fi
+
 }
 
  #deploying K8 cluster
@@ -72,6 +87,11 @@ if ! check_requirements; then
         echo " -----------------requirements failed!------------------- "
         exit 1
 fi
+if ! reset_env; then
+        echo " ***************** reset failed! ***********************"
+        exit 1
+fi
+
 if ! change_path; then
         echo "-------------path change failed-------------------"
         exit 1
