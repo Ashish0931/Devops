@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Push image') {
             steps {
-                sh 'docker login -u ashish0931 -p dckr_pat_iQiZFqzBzepvHrX5c-b8Xm4I_Nk'
+                sh 'docker login -u ashish0931 -p docker_hub_token'
                 sh 'docker push ashish0931/docker-practice'
             }
         }
