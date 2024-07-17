@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        Username = 'Ashish0931'
-        token = 'dckr_pat_iQiZFqzBzepvHrX5c-b8Xm4I_Nk'
+        Username = 'docker_username'
+        token = 'docker_token'
         build_number = 'V.1'
         docker_credentials = credentials('docker')
     }
@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Push image') {
             steps {
-                sh 'docker login -u ashish0931 -p docker_hub_token'
+                sh 'docker login -u $username -p $token'
                 sh 'docker push ashish0931/docker-practice'
             }
         }
