@@ -15,33 +15,36 @@ Docker : Service Containers
 Public use.
 ➢ This service need 1 Mount Volume, 2 Network and 5 Stack Services
 ➢ Two overlay network you can call frontend and backend is needed.
-Docker : Service Containers
+------------------------------------------------------------------
 ➢ Voting App:
 ○ Image : dockersamples/examplevotingapp_vote
 ○ Web front app
 ○ Publish this on port 5000, Listener Container Port 80
 ○ Publish 4 replicas
 ○ Publish on frontend overlay Network
+---------------------------------------------------------------------
 ➢ Redis:
 ○ Image : redis:alpine
 ○ Redis is used to Collect New Votes
 ○ Publish 4 replicas
 ○ Publish on frontend overlay Network
-Docker : Service Containers
+------------------------------------------------------------------
 ➢ Worker:
 ○ Image : dockersamples/examplevotingapp_worker
 ○ A .NET worker which consumes votes and stores them
 ○ Publish 4 replicas
 ○ Publish on frontend & backend overlay Network
+----------------------------------------------------------------------
 ➢ DB Service:
 ○ Image : postgres:15-alpine
 ○ Mount Volume and mount to /var/lib/postgresql/data
 ○ Publish on backend network
 ○ Publish 1 replicas
-Docker : Service Containers
+-----------------------------------------------------------------------
 ➢ Result Service:
 ○ Image : dockersamples/examplevotingapp_result
 ○ Will display the Voting result
 ○ Publish on backend network
 ○ Publish on port 5001, Container port 80
 ○ Publish 1 replicas
+------------------------------------------------------------------------------
