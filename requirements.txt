@@ -7,10 +7,8 @@ Docker : Service Containers
 ➢ Docker’s Distributed Voting App.
 ➢ This solution uses Python, Node.js, .NET, with Redis for messaging and
 Postgres for storage.
-Docker : Service Containers
-➢ Architecture –
-➢ This is combination of Several docker and compose/swarm file. 
-
+------------------------------------------------------------------------
+------------------------------------------------------------------------
 ➢ App is designed by Docker community and available on Docker Hub for
 Public use.
 ➢ This service need 1 Mount Volume, 2 Network and 5 Stack Services
